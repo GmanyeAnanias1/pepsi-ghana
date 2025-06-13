@@ -34,8 +34,8 @@ class AuthenticatedSessionController extends Controller
         return redirect()->route('dashboard');
     }
 
-    if ($user->isUser()) {
-        return redirect()->route('user.dashboard');
+    if ($user->isApplicant()) {
+        return redirect()->route('applicant.applicant.dashboard');
     }
 
     // Optional: fallback if role is not recognized

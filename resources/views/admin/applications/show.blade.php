@@ -1,3 +1,4 @@
+<x-app-layout>
 @extends('layouts.admin')
 
 @section('header', 'Application Details')
@@ -162,3 +163,4 @@
     </a>
 </div>
 @endsection
+</x-app-layout>

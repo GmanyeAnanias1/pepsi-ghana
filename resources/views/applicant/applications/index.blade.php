@@ -1,18 +1,18 @@
+<x-app-layout>
 @extends('layouts.applicant')
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('My Dashboard') }}
         </h2>
     </x-slot>
 
 
 
-<div class="bg-white p-6 rounded-lg shadow-md max-w-7xl mx-auto">
+<div class="bg-white p-6 rounded-lg shadow-md max-w-7xl mx-auto mt-4">
     {{-- <h1 class="text-3xl font-bold mb-8 text-gray-800">Dashboard</h1> --}}
 
-    {{-- Summary Cards --}}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {{-- Summary Cards --}}    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-blue-100 p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
             <h2 class="text-xl font-semibold text-blue-800 mb-2">My Applications</h2>
             <p class="text-4xl font-bold text-blue-900 mb-4">{{ auth()->user()->applications->count() }}</p>
@@ -22,7 +22,7 @@
         <div class="bg-green-100 p-6 rounded-lg shadow hover:shadow-lg transition duration-300">
             <h2 class="text-xl font-semibold text-green-800 mb-2">Available Jobs</h2>
 
-            {{-- <p class="text-4xl font-bold text-green-900 mb-4">{{ \App\Models\Job::where('is_active', true)->count() }}</p> --}}
+            <p class="text-4xl font-bold text-green-900 mb-4">{{ \App\Models\Job::where('is_active', true)->count() }}</p>
             <a href="{{ route('applicant.jobs.index') }}" class="text-green-700 hover:underline">Browse open positions →</a>
         </div>
     </div>
@@ -90,3 +90,4 @@
 
 </div>
 
+</x-app-layout>

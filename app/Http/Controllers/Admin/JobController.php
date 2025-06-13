@@ -11,7 +11,7 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::latest()->paginate(10);
+        $jobs = Job::latest()->paginate(5);
         return view('admin.jobs.index', compact('jobs'));
     }
 
@@ -69,9 +69,10 @@ public function destroy(Job $job)
 {
     $job->delete();
 
-    return response()->json([
-        'message' => 'Job deleted successfully'
-    ]);
+    return redirect()->route('admin.jobs.index')
+        ->with('success', 'Job deleted successfully.');
 }
+
+
 
 }

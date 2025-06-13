@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Applicant\ApplicationController;
 use App\Http\Controllers\Admin\JobController as AdminJobController;
 use App\Http\Controllers\Applicant\JobController as ApplicantJobController;
 use App\Http\Controllers\Admin\ApplicationController as AdminApplicationController;
@@ -41,15 +42,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 });
 
 // Applicant routes
-Route::middleware(['auth','user'])->prefix('applicant')->name('applicant.')->group(function () {
+Route::middleware(['auth','applicant'])->prefix('applicant')->name('applicant.')->group(function () {
     // Dashboard
-    Route::get('/user-dashboard', function () {
-        return view('applicant.dashboard');
-    })->name('user.dashboard');
+    Route::get('/user-dashboard', [ApplicationController::class,'index'])->name('applicant.dashboard');
 
     // Browse jobs
     Route::get('/jobs', [ApplicantJobController::class, 'index'])->name('jobs.index');
     Route::get('/jobs/{job}', [ApplicantJobController::class, 'show'])->name('jobs.show');
+    Route::get('/jobs/{job}/apply', [ApplicantJobController::class, 'showApplyForm'])->name('jobs.apply.form');
+    // Apply for a job
     Route::post('/jobs/{job}/apply', [ApplicantJobController::class, 'apply'])->name('jobs.apply');
 
     // View applications

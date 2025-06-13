@@ -21,7 +21,7 @@
         x-show="show"
         x-transition
         class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4"
-    >
+    style="margin-top: -45rem; margin-left: 30rem; width: 30rem;text-align: center;">
         {{ session('success') }}
     </div>
 @endif
@@ -51,7 +51,8 @@
             {{-- <div class="text-xl font-bold mb-8">{{ config('app.name') }} Admin</div> --}}
 <img src="{{ asset('images/pep-1.png') }}" alt="" style="border-radius: 50%; width:3rem; margin-bottom:50px; margin-left:60px; margin-top:10px;">
 
-<h2>{{ Auth::user()->name }}</h2>
+<h2>{{ strtoupper(Auth::user()->name) }}</h2>
+
             <ul>
                 {{-- <li class="mb-2">
                     <a href="{{ route('admin.dashboard') }}" class="block p-2 hover:bg-gray-700 rounded">
@@ -88,5 +89,9 @@
             </main>
         </div>
     </div>
+    <!-- Alpine.js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
 </body>
 </html>
