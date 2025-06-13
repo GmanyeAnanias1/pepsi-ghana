@@ -21,7 +21,7 @@ class JobController extends Controller
             });
         }
 
-        $jobs = $query->latest()->paginate(10);
+        $jobs = $query->latest()->paginate(6);
         return view('applicant.jobs.index', compact('jobs'));
     }
 
@@ -30,8 +30,13 @@ class JobController extends Controller
         $hasApplied = auth()->user()->applications()->where('job_id', $job->id)->exists();
         return view('applicant.jobs.show', compact('job', 'hasApplied'));
     }
+public function showApplyForm($jobId)
+{
+    $job = Job::findOrFail($jobId);
+    return view('applicant.jobs.apply', compact('job'));
+}
 
-    public function apply(Request $request, Job $job)
+   public function apply(Request $request, Job $job)
     {
         $request->validate([
             'cover_letter' => 'required|string',
@@ -50,6 +55,7 @@ class JobController extends Controller
         ]);
 
         return redirect()->route('applicant.applications.index')
-            ->with('success', 'Application submitted successfully');
+                  ->with('success', 'Application submitted successfully!');
     }
+
 }

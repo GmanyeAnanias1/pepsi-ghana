@@ -30,7 +30,7 @@
 
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100" style="margin-top: -3rem;">
-            @include('layouts.navigation')
+            {{-- @include('layouts.navigation') --}}
             <x-sidebar />
 
             <!-- Page Heading -->

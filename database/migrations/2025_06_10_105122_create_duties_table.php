@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobTable extends Migration
+return new class extends Migration
 {
-    public function up()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
-
-        Schema::create('job',function(Blueprint $table) {
+       Schema::create('duties',function(Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');
@@ -23,10 +25,11 @@ class CreateJobTable extends Migration
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('job');
+        Schema::dropIfExists('duties');
     }
-}
-
-
+};
