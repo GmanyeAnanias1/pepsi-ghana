@@ -11,6 +11,8 @@ class JobController extends Controller
 {
     public function index()
     {
+        // Fetch the latest jobs with pagination
+
         $jobs = Job::latest()->paginate(5);
         return view('admin.jobs.index', compact('jobs'));
     }
@@ -36,12 +38,16 @@ class JobController extends Controller
 
     return redirect()->route('admin.jobs.index')->with('success', 'Job posted successfully!');
 }
+
+public function show($id){
+     $job = Job::findOrFail($id);
+     return view('admin.jobs.show', compact('job'));
+}
+
 public function edit(Job $job)
 {
-    return response()->json([
-        'message' => 'Job retrieved successfully',
-        'data' => $job
-    ]);
+    $job = Job::findOrFail($job->id);
+    return view('admin.jobs.edit', compact('job'));
 }
 
 public function update(Request $request, Job $job)

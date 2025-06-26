@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }} - Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-FR0N/Ny4I9YdD7bG4Uw2tPCT6W5YZ00eUIE7j9C5hBoSzQzMQYwdQZPLJ/ytgRBi" crossorigin="anonymous">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -54,11 +55,11 @@
 <h2>{{ strtoupper(Auth::user()->name) }}</h2>
 
             <ul>
-                {{-- <li class="mb-2">
-                    <a href="{{ route('admin.dashboard') }}" class="block p-2 hover:bg-gray-700 rounded">
+                <li class="mb-2">
+                    <a href="{{ route('dashboard') }}" class="block p-2 hover:bg-gray-700 rounded">
                         Dashboard
                     </a>
-                </li> --}}
+                </li>
                 <li class="mb-2">
                     <a href="{{ route('admin.jobs.index') }}" class="block p-2 hover:bg-gray-700 rounded">
                         Manage Jobs
@@ -92,6 +93,7 @@
     <!-- Alpine.js -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-svNyhrxHUK+y5zZQ3Xt0HJKQ6uOk+5fHVbHYklc+h5uZg6bKD+BRLZTQvJe5gx8v" crossorigin="anonymous"></script>
+    </script>
 </body>
 </html>
