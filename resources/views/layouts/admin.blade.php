@@ -6,7 +6,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }} - Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-FR0N/Ny4I9YdD7bG4Uw2tPCT6W5YZ00eUIE7j9C5hBoSzQzMQYwdQZPLJ/ytgRBi" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-FR0N/Ny4I9YdD7bG4Uw2tPCT6W5YZ00eUIE7j9C5hBoSzQzMQYwdQZPLJ/ytgRBi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -49,24 +50,30 @@
     <div class="min-h-screen bg-gray-100">
         <!-- Sidebar Navigation -->
         <nav class="fixed top-0 left-0 bottom-0 w-64 bg-gray-800 text-white p-4">
-            {{-- <div class="text-xl font-bold mb-8">{{ config('app.name') }} Admin</div> --}}
-<img src="{{ asset('images/pep-1.png') }}" alt="" style="border-radius: 50%; width:3rem; margin-bottom:50px; margin-left:60px; margin-top:10px;">
 
+
+<img src="{{ asset('images/man.png') }}" alt="" style="border-radius: 50%; width:4rem; margin-bottom:5px; margin-left:64px; margin-top:10px;">
+<div class="text-center mb-8">
 <h2>{{ strtoupper(Auth::user()->name) }}</h2>
+</div>
 
             <ul>
                 <li class="mb-2">
                     <a href="{{ route('dashboard') }}" class="block p-2 hover:bg-gray-700 rounded">
+                       <i class="fa fa-home " style="color: rgb(153, 243, 153)"></i>
                         Dashboard
                     </a>
+
                 </li>
                 <li class="mb-2">
                     <a href="{{ route('admin.jobs.index') }}" class="block p-2 hover:bg-gray-700 rounded">
+                        <i class="fa fa-briefcase" style="color: rgb(153, 243, 153)"></i>
                         Manage Jobs
                     </a>
                 </li>
                 <li class="mb-2">
                     <a href="{{ route('admin.applications.index') }}" class="block p-2 hover:bg-gray-700 rounded">
+                        <i class="fas fa-file" style="color: rgb(153, 243, 153)"></i>
                         Manage Applications
                     </a>
                 </li>
@@ -74,6 +81,7 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="w-full text-left p-2 hover:bg-gray-700 rounded">
+                            <i class="fas fa-sign-out-alt" style="color: red"></i>
                             Logout
                         </button>
                     </form>
@@ -93,7 +101,8 @@
     <!-- Alpine.js -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-svNyhrxHUK+y5zZQ3Xt0HJKQ6uOk+5fHVbHYklc+h5uZg6bKD+BRLZTQvJe5gx8v" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-svNyhrxHUK+y5zZQ3Xt0HJKQ6uOk+5fHVbHYklc+h5uZg6bKD+BRLZTQvJe5gx8v" crossorigin="anonymous"></script>
     </script>
 </body>
 </html>
