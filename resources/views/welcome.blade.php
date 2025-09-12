@@ -21,155 +21,101 @@
             </style>
         @endif
     </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden " >
-            @if (Route::has('login'))
-<nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm px-3 py-2" style="z-index: 1050; width: 100%; height:100px;">
-  <div class="container-fluid">
-    <!-- App Logo -->
-    <a href="{{ url('/') }}" class="flex items-center gap-2">
-        <img src="{{ asset('images/Pepsi_Logo.png') }}"  class="h-8 w-auto">
-        <span class="text-lg font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">Pepsi Ghana</span>
-    </a>
+    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen flex flex-col">
 
-    <!-- Auth Buttons -->
-    <div class="flex items-center gap-4 ml-auto">
-        @auth
-            <a
-                href="{{ url('/dashboard') }}"
-                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-            >
-                Dashboard
-            </a>
-        @else
-            <a
-                href="{{ route('login') }}"
-                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-            >
-                Log in
-            </a>
+    <!-- Navbar -->
+    @if (Route::has('login'))
+    <nav class="fixed top-0 w-full z-50 bg-white shadow-sm py-4 px-6 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="{{ url('/') }}" class="flex items-center gap-2">
+            <img src="{{ asset('images/Pepsi_Logo.png') }}" class="h-8 w-auto" alt="Pepsi Logo">
+            <span class="text-lg font-semibold text-[#1b1b18] dark:text-[#EDEDEC]">Pepsi Ghana</span>
+        </a>
 
-            @if (Route::has('register'))
-                <a
-                    href="{{ route('register') }}"
-                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                    Register
+        <!-- Auth Links -->
+        <div class="flex gap-4">
+            @auth
+                <a href="{{ url('/dashboard') }}" class="px-4 py-1.5 text-sm text-[#1b1b18] dark:text-[#EDEDEC] border border-gray-300 rounded hover:border-gray-500">
+                    Dashboard
                 </a>
-            @endif
-        @endauth
-    </div>
-    </div>
-</nav>
-
-            @endif
-        </header>
-        <div class="relative w-full h-[300px] lg:h-[400px] mb-6 lg:mb-8 flex items-center justify-center bg-cover bg-center"
-     style="background-image: url('{{ asset('images/pep-2.png') }}'); margin-top:60px; background-repeat: no-repeat; background-size: cover; background-color: #f0f0f0;">
-
-    <!-- Black overlay -->
-    <div class="absolute inset-0 bg-black opacity-50"></div>
-
-    <!-- Gradient overlay -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#1b1b18] to-[#EDEDEC] opacity-50"></div>
-
+            @else
+                <a href="{{ route('login') }}" class="px-4 py-1.5 text-sm text-[#1b1b18] dark:text-[#EDEDEC] border border-transparent hover:border-gray-300 rounded">
+                    Log in
+                </a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="px-4 py-1.5 text-sm text-[#1b1b18] dark:text-[#EDEDEC] border border-gray-300 rounded hover:border-gray-500">
+                        Register
+                    </a>
+                @endif
+            @endauth
         </div>
-        <h1 class="font-bold mb-6 text-center" style="font-size: 60px; color:rgb(255, 255, 255); margin-top:-300px; z-index:1">WELCOME TO PEPSI GHANA ONLINE JOB PORTAL</h1>
-        <h2 class="text-2xl lg:text-2xl mb-6 text-center">Find your dream job with us</h2>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
+    </nav>
+    @endif
 
+    <!-- Hero Section -->
+    <div class="relative w-full h-[300px] lg:h-[450px] mt-[80px] mb-6">
+        {{-- <div class="absolute inset-0 bg-black/50 z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#1b1b18] to-[#EDEDEC] opacity-50 z-0"></div> --}}
+        {{-- <img src="{{ asset('images/pep-2.png') }}" alt="Hero Image" class="w-full h-full object-cover" /> --}}
 
+        <h1 class="absolute inset-0 flex items-center justify-center text-danger text-center font-bold text-3xl lg:text-5xl px-4 z-10" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);margin-top: -230px;">
+            WELCOME TO PEPSI GHANA ONLINE JOB PORTAL
+        </h1>
 
-
-
-
-                    <p class="mb-6" style="margin-top: 6rem; font-size: 16px; color:rgb(0, 0, 0);">
-                        Welcome to the Pepsi Ghana Online Job Portal, your gateway to exciting career opportunities. Whether you're a seasoned professional or just starting out, we have a range of positions available to suit your skills and aspirations.
-                    </p>
-                    <p class="mb-6">
-                        Explore our job listings, apply online, and take the first step towards a rewarding career with Pepsi Ghana. Join us in our mission to refresh the world and make a difference in the lives of our customers.
-                    </p>
-
-                    <p class="mb-6">
-                        Thank you for choosing Pepsi Ghana. We look forward to helping you find your dream job!
-                    </p>
-
-
-                </div>
-            </main>
-
-        </div>
-<!-- Carousel Section -->
-<div id="carouselExampleCaptions carouselExampleAutoplaying" class="carousel slide mt-5" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-  </div>
-
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ asset('images/team-1.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Our World Class Team</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
     </div>
-
-    <div class="carousel-item">
-      <img src="{{ asset('images/team-2.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Our Bottling Team</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
+    <div class="w-full px-4 lg:px-8 text-center mb-8" style="font-size: 2rem; margin-top:-300px;">
+    <h3>JOIN OUR WORK FORCE TODAY!</h3>
     </div>
-
-    <div class="carousel-item">
-      <img src="{{ asset('images/team-3.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-
-    <div class="carousel-item">
-      <img src="{{ asset('images/team-4.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Fourth slide label</h5>
-        <p>Some representative placeholder content for the fourth slide.</p>
-      </div>
-    </div>
-
-    <div class="carousel-item">
-      <img src="{{ asset('images/team-4.jpg') }}" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Fifth slide label</h5>
-        <p>Some representative placeholder content for the fifth slide.</p>
-      </div>
-    </div>
-  </div>
-
-  <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden ">Previous</span>
-  </button>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+   <!-- Dream Job Image Section -->
+<div class="w-full px-4 lg:px-8 flex justify-center mb-8">
+    <img src="{{ asset('images/dream-job.jpg') }}"
+         alt="Find your dream job"
+         class="max-w-4xl w-full rounded shadow-md object-cover">
 </div>
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
+<div class="w-full px-4 lg:px-8 text-center mb-8 " style="font-size: 5rem;">
+    <h3>Create an account to explore our available jobs</h3>
+</div>
+    <!-- Carousel Section -->
+    <div id="carouselExampleCaptions" class="carousel slide mt-12" data-bs-ride="carousel" style="width: 60%; height: 500px;align-self: center;">
+        <div class="carousel-indicators">
+            @for ($i = 0; $i < 5; $i++)
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $i }}" @if ($i == 0) class="active" aria-current="true" @endif aria-label="Slide {{ $i + 1 }}"></button>
+            @endfor
+        </div>
 
+        <div class="carousel-inner">
+            @php
+                $images = ['team-1.jpg', 'team-2.jpg', 'team-3.jpg', 'team-4.jpg', 'team-4.jpg'];
+                $captions = ['Our World Class Team', 'Our Bottling Team', 'Tech & Logistics', 'Frontline Operations', 'We Make It Happen'];
+            @endphp
 
-        <!-- Bootstrap JS Bundle (includes Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            @foreach ($images as $index => $img)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                    <img src="{{ asset('images/' . $img) }}" class="d-block w-100" alt="Slide {{ $index + 1 }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ $captions[$index] }}</h5>
+                        <p>Nature of our bottling jobs.</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
-    </body>
+    <!-- Space for footer or further content -->
+    <div class="h-16 lg:h-24"></div>
+
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    @include('layouts.footer')
+</body>
+
 </html>

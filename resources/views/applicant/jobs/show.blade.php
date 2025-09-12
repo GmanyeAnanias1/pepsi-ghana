@@ -192,7 +192,7 @@
 
                         <div class="flex justify-between items-center py-2">
                             <span class="text-gray-600 font-medium">Posted Date</span>
-                            {{-- <span class="text-gray-900 font-semibold">{{ $job->created_at->format('M d, Y') }}</span> --}}
+                            <span class="text-gray-900 font-semibold">{{ $job->created_at->format('M d, Y') }}</span>
                         </div>
                     </div>
 
