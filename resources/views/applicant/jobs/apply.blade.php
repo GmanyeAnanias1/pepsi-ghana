@@ -71,10 +71,11 @@
                             @endif
                         </div>
 
-                        <div class="mt-6 pt-6 border-t border-gray-200">
-                            <p class="text-sm text-gray-500 text-center">
-                                Posted {{ $job->created_at->diffForHumans() }}
-                            </p>
+                        <div class="text-xs text-gray-500 mb-4 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Posted {{ $job->created_at ? $job->created_at->format('d M Y') : 'Recently' }}
                         </div>
                     </div>
                 </div>
@@ -166,7 +167,7 @@
                                 </div>
 
                                 <!-- Application Guidelines -->
-                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <div class="bg-gray-50 border border-blue-200 rounded-lg p-4">
                                     <h4 class="font-semibold text-blue-800 mb-2">Application Guidelines</h4>
                                     <ul class="text-sm text-blue-700 space-y-1">
                                         <li>• Make sure your resume is up-to-date and relevant</li>
